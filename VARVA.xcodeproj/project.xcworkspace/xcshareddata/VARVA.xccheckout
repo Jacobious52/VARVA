@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>33361E71-EC04-4459-9A35-1BA1DE006894</string>
+	<key>IDESourceControlProjectName</key>
+	<string>VARVA</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>570BABE2566CECBA2463D93A21163312988B1EFE</key>
+		<string>https://github.com/Jacobious52/VARVA.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>VARVA.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>570BABE2566CECBA2463D93A21163312988B1EFE</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Jacobious52/VARVA.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>570BABE2566CECBA2463D93A21163312988B1EFE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>570BABE2566CECBA2463D93A21163312988B1EFE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>VARVA</string>
+		</dict>
+	</array>
+</dict>
+</plist>
