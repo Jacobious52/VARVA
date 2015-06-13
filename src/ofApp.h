@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "VarManager.h"
 
 class ofApp : public ofBaseApp
 {
@@ -20,5 +21,4 @@ public:
     void gotMessage(ofMessage msg);
     
 private:
-
 };
