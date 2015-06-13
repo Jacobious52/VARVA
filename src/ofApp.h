@@ -20,5 +20,5 @@ public:
     void gotMessage(ofMessage msg);
     
 private:
-    
+
 };
