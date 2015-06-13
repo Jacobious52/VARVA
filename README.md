@@ -7,3 +7,12 @@ VARVA will use the Openframeworks library for drawing of graphs, etc and varible
 
 VARVA will include a trivial C++ Header and Python Module for use for debugging programs and algorithms.
 
+Debug output format for library's
+
+binary_working_dir/debug/*.var
+Where binary_working_dir is the directory where your program binary to be debugged is located
+Where *.var file are files that contain the debig output from your program for each variable.
+
+The format for *.var is in a csv format:
+
+<value>,<time>,<file>,<function>,<line>
