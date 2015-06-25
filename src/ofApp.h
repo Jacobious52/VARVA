@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "VarManager.h"
+#include "Button.h"
 
 class ofApp : public ofBaseApp
 {
@@ -19,6 +20,8 @@ public:
     void windowResized(int w, int h);
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
+
+    vector<View *> views;
     
 private:
 };

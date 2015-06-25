@@ -3,6 +3,11 @@
 //--------------------------------------------------------------
 void ofApp::setup()
 {
+    ofBackground(25);
+    ofSetFrameRate(30);
+    ofSetEscapeQuitsApp(false);
+    ofSetWindowTitle("VARVA");
+
     VarManager::shared_manager().load_varibles("/Users/Jacob/Developer/of_v0.8.4_osx_release/apps/myApps/VARVA/debuggers/");
 }
 
