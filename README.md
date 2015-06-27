@@ -15,4 +15,4 @@ Where *.var file are files that contain the debig output from your program for e
 
 The format for *.var is in a csv format:
 
-{value},{file},{function},{line}
+{value},{file},{function},{line},{note}
