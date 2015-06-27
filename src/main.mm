@@ -15,9 +15,10 @@ int main()
 	// pass in width and height too:
 
     // If on OSX make window frame dark.
-#ifdef __APPLE__
+#ifdef TARGET_OSX
     NSWindow *window = (NSWindow *)ofGetCocoaWindow();
     [window setAppearance:[NSAppearance appearanceNamed:NSAppearanceNameVibrantDark]];
+    [window setTitlebarAppearsTransparent:YES];
     [window invalidateShadow];
 #endif
 
