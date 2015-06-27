@@ -4,10 +4,11 @@
 #include "VarManager.h"
 #include "Button.h"
 
-class ofApp : public ofBaseApp
+class ofApp : public ofBaseApp, IViewDelegate
 {
 public:
     void setup();
+    void exit();
     void update();
     void draw();
 
@@ -21,7 +22,11 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
 
+    void viewClicked(string name, View *sender);
+
     vector<View *> views;
+
+    ofTrueTypeFont uiFont;
     
 private:
 };

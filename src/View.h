@@ -10,27 +10,66 @@
 
 #include "ofMain.h"
 
+class View;
+
+class IViewDelegate
+{
+public:
+    virtual void viewClicked(string name, View *sender) = 0;
+};
+
 class View
 {
 public:
-    View(ofVec2f pos, ofVec2f size)
-        : _pos(pos), _size(size)
-    {}
+    View(ofPoint pos, ofPoint size)
+        : _pos(pos), _size(size), name("")
+    {
+        _delegate = 0;
+        depth = 0;
+    }
+
+    View(int x, int y, int w, int h)
+    : _pos(x, y), _size(w, h), name("")
+    {
+        _delegate = 0;
+        depth = 0;
+    }
+
     virtual ~View()
-    {}
+    {
+        _delegate = 0;
+    }
 
     virtual void update() = 0;
     virtual void draw() = 0;
 
-    void (*mousePressed)(int x, int y, int button);
+    virtual void mousePressed(int x, int y, int button) = 0;
+    virtual void mouseReleased(int x, int y, int button) = 0;
+    virtual void mouseDragged(int x, int y, int button) = 0;
+    virtual void mouseMoved(int x, int y ) = 0;
+    virtual void mouseLeft() = 0;
 
-    ofVec2f getPos() const;
-    void setPos(ofVec2f pos);
+    ofPoint getPos() const;
+    void setPos(ofPoint pos);
 
-    ofVec2f getSize() const;
-    void setSize(ofVec2f size);
+    ofPoint getSize() const;
+    void setSize(ofPoint size);
 
-private:
-    ofVec2f _pos;
-    ofVec2f _size;
+    ofRectangle getBounds() const;
+
+    void setDelegate(IViewDelegate *delegate);
+
+    void setFont(ofTrueTypeFont &font);
+
+    string name;
+
+    float depth;
+
+protected:
+    ofPoint _pos;
+    ofPoint _size;
+
+    ofTrueTypeFont _font;
+
+    IViewDelegate *_delegate;
 };

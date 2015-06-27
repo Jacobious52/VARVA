@@ -29,9 +29,9 @@ void VarManager::load_varibles(string directory)
         {
             printf("%s\n", line.c_str());
             vector<string> split = ofSplitString(line, ",");
-            if (line.empty() == false && split.size() == 4)
+            if (line.empty() == false && split.size() == 5)
             {
-                var_map[dir.getName(i)].push_back(Variable(split[1], split[2], split[3], ofToFloat(split[0])));
+                var_map[dir.getName(i)].push_back(Variable(split[1], split[2], split[3], ofToFloat(split[0]), split[4]));
             }
         }
     }
