@@ -10,7 +10,8 @@
 
 void VarManager::load_varibles(string directory)
 {
-    ofDirectory dir(directory);
+    _current_dir = directory;
+    ofDirectory dir(_current_dir);
     dir.allowExt("var");
     dir.listDir();
 
@@ -39,9 +40,15 @@ void VarManager::load_varibles(string directory)
     dir.close();
 }
 
+string VarManager::current_dir() const
+{
+    return _current_dir;
+}
+
 void VarManager::unload()
 {
     var_map.clear();
+    _current_dir = "";
 }
 
 vector<Variable> &VarManager::operator[](string key)

@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup()
 {
-    ofBackgroundHex(0x212121);
+    ofBackgroundHex(0x111111);
     ofSetFrameRate(30);
     ofSetEscapeQuitsApp(false);
     ofSetWindowTitle("VARVA");
@@ -11,18 +11,19 @@ void ofApp::setup()
     ofTrueTypeFont::setGlobalDpi(72);
 
     ofSetCircleResolution(72);
+    ofEnableAntiAliasing();
 
     uiFont.loadFont("Roboto-Regular.ttf", 18);
     uiFontLarge.loadFont("Roboto-Bold.ttf", 24);
 
-    Button *quitButton = new Button(20, 20, 100, 25);
+    Button *quitButton = new Button(20, 20, 200, 50);
     quitButton->name = "Quit";
     quitButton->setFont(uiFont);
     quitButton->depth = 2;
     quitButton->setDelegate(this);
     addView(quitButton);
 
-    Button *unloadButton = new Button(140, 20, 100, 25);
+    Button *unloadButton = new Button(240, 20, 200, 50);
     unloadButton->name = "Unload";
     unloadButton->setFont(uiFont);
     unloadButton->depth = 6;
@@ -85,14 +86,6 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-    for (auto view : views)
-    {
-        if (!view.second->hidden)
-        {
-            view.second->draw();
-        }
-    }
-
     if (loaded)
     {
         vector<Variable> vars = VarManager::shared_manager()["i"];
@@ -113,12 +106,28 @@ void ofApp::draw()
     {
         // draw drag n drop circle
 
-        ofSetHexColor(0x121212);
+        ofSetHexColor(0x2F2FCF);
+        ofCircle(ofGetWidth()/2, ofGetHeight()/2, dragRadius+50*sin(dragRadius/100*M_PI) + 60);
+        ofSetHexColor(0x212121);
         ofCircle(ofGetWidth()/2, ofGetHeight()/2, dragRadius);
         string dragMsg = "Drag Debug Folder";
         float sx = uiFontLarge.stringWidth(dragMsg);
         ofSetColor(255);
         uiFontLarge.drawString(dragMsg, ofGetWidth()/2 - sx/2, ofGetHeight()/2);
+    }
+
+    ofSetColor(255);
+    uiFontLarge.drawString(VarManager::shared_manager().current_dir(), 20, 40);
+
+    ofSetHexColor(0x212121);
+    ofRect(0, toolbarOffset, ofGetWidth(), 90);
+
+    for (auto view : views)
+    {
+        if (!view.second->hidden)
+        {
+            view.second->draw();
+        }
     }
 }
 
@@ -151,6 +160,10 @@ void ofApp::mouseMoved(int x, int y )
             }
         }
     }
+
+    toolbarOffset = -powf(2.0, 0.025*(y - 100));
+    views.find("Quit")->second->setPos(ofPoint(20, -powf(2.0, 0.035*(y-100)) + 20));
+    views.find("Unload")->second->setPos(ofPoint(240, -powf(2.0, 0.040*(y-100)) + 20));
 }
 
 //--------------------------------------------------------------
@@ -214,7 +227,9 @@ void ofApp::gotMessage(ofMessage msg)
 void ofApp::dragEvent(ofDragInfo dragInfo)
 {
     // TODO: check if folder of file
-    VarManager::shared_manager().load_varibles("/Users/Jacob/Developer/of_v0.8.4_osx_release/apps/myApps/VARVA/debuggers/");
+    //VarManager::shared_manager().load_varibles("/Users/Jacob/Developer/of_v0.8.4_osx_release/apps/myApps/VARVA/debuggers/");
+
+    VarManager::shared_manager().load_varibles(dragInfo.files[0]);
     loaded = true;
     views.find("Unload")->second->hidden = false;
 }

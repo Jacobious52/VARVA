@@ -22,15 +22,18 @@ public:
 
     void load_varibles(string directory);
     void unload();
+    string current_dir() const;
 
     vector<Variable> &operator[](string key);
 
     map<string, vector<Variable> > var_map;
 
 private:
-    VarManager()
+    VarManager() : _current_dir("")
     {}
 
     VarManager(VarManager const &) = delete;
     void operator=(VarManager const &) = delete;
+
+    string _current_dir;
 };

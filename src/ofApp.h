@@ -33,4 +33,6 @@ public:
 
     bool loaded;
     float dragRadius;
+
+    float toolbarOffset;
 };
