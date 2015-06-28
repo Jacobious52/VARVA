@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "VarManager.h"
 #include "Button.h"
+#include "Graph.h"
 
 class ofApp : public ofBaseApp, IViewDelegate
 {

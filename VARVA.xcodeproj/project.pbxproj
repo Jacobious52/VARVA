@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1694D4621B4033A00002CF3F /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1694D4601B4033A00002CF3F /* Graph.cpp */; };
 		16A9B90D1B2C8B6A00DF589E /* VarManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16A9B90B1B2C8B6A00DF589E /* VarManager.cpp */; };
 		16A9B9101B2C8FBB00DF589E /* Variable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16A9B90E1B2C8FBB00DF589E /* Variable.cpp */; };
 		16F7601B1B3C0AC300D20CA5 /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16F760191B3C0AC300D20CA5 /* View.cpp */; };
@@ -63,6 +64,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1694D4601B4033A00002CF3F /* Graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Graph.cpp; sourceTree = "<group>"; };
+		1694D4611B4033A00002CF3F /* Graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
 		16A9B90B1B2C8B6A00DF589E /* VarManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VarManager.cpp; sourceTree = "<group>"; };
 		16A9B90C1B2C8B6A00DF589E /* VarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VarManager.h; sourceTree = "<group>"; };
 		16A9B90E1B2C8FBB00DF589E /* Variable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Variable.cpp; sourceTree = "<group>"; };
@@ -192,6 +195,8 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				1694D4601B4033A00002CF3F /* Graph.cpp */,
+				1694D4611B4033A00002CF3F /* Graph.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.mm */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				16F7601C1B3C0E9C00D20CA5 /* Button.cpp */,
@@ -305,6 +310,7 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.mm in Sources */,
 				16A9B90D1B2C8B6A00DF589E /* VarManager.cpp in Sources */,
+				1694D4621B4033A00002CF3F /* Graph.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				16A9B9101B2C8FBB00DF589E /* Variable.cpp in Sources */,
 				16F7601B1B3C0AC300D20CA5 /* View.cpp in Sources */,

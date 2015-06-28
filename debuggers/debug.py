@@ -10,5 +10,8 @@ def main():
     for i in range(0, 20):
         watch("i", float(math.sin(i)), '"note"')
 
+    for i in range(0, 20):
+        watch('x', float(2*i), '"x is now %s"' % i)
+
 if __name__ == '__main__':
     main()

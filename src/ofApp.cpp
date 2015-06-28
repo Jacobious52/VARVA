@@ -19,14 +19,12 @@ void ofApp::setup()
     Button *quitButton = new Button(20, 20, 200, 50);
     quitButton->name = "Quit";
     quitButton->setFont(uiFont);
-    quitButton->depth = 2;
     quitButton->setDelegate(this);
     addView(quitButton);
 
     Button *unloadButton = new Button(240, 20, 200, 50);
     unloadButton->name = "Unload";
     unloadButton->setFont(uiFont);
-    unloadButton->depth = 6;
     unloadButton->hidden = true;
     unloadButton->setDelegate(this);
     addView(unloadButton);
@@ -86,23 +84,7 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-    if (loaded)
-    {
-        vector<Variable> vars = VarManager::shared_manager()["i"];
-
-        ofPolyline line;
-
-        for (int i = 0; i < vars.size(); i++)
-        {
-            Variable v = vars[i];
-            ofSetColor(ofColor::red);
-            ofCircle(i*30 + 100, ofGetHeight() - v.var_value*30 - 100, 3);
-            line.curveTo(i*30 + 100, ofGetHeight() - v.var_value*30 - 100, 3);
-        }
-
-        line.draw();
-    }
-    else
+    if (!loaded)
     {
         // draw drag n drop circle
 
@@ -126,7 +108,17 @@ void ofApp::draw()
     {
         if (!view.second->hidden)
         {
-            view.second->draw();
+            if (view.second->name.substr(0, 5) == "graph")
+            {
+                if (loaded)
+                {
+                    view.second->draw();
+                }
+            }
+            else
+            {
+                view.second->draw();
+            }
         }
     }
 }
@@ -214,7 +206,15 @@ void ofApp::mouseReleased(int x, int y, int button)
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h)
 {
-
+    for (auto var : views)
+    {
+        if (var.second->name.substr(0, 5) == "graph")
+        {
+            ofLog(OF_LOG_NOTICE, "resize");
+            Graph *graph = (Graph *)var.second;
+            graph->setSize(ofPoint(w - 40, 300));
+        }
+    }
 }
 
 //--------------------------------------------------------------
@@ -232,4 +232,14 @@ void ofApp::dragEvent(ofDragInfo dragInfo)
     VarManager::shared_manager().load_varibles(dragInfo.files[0]);
     loaded = true;
     views.find("Unload")->second->hidden = false;
+
+    int y = 0;
+    for (auto var : VarManager::shared_manager().var_map)
+    {
+        Graph *graph = new Graph(var.second, 20, 100 + (300+10*y)*y, ofGetWidth()-40, 300);
+        graph->setFont(uiFont);
+        graph->name = "graph_" + var.first;
+        addView(graph);
+        y++;
+    }
 }
