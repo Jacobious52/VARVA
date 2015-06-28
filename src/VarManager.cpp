@@ -27,7 +27,7 @@ void VarManager::load_varibles(string directory)
 
         for (auto line : lines)
         {
-            printf("%s\n", line.c_str());
+            ofLog(OF_LOG_NOTICE ,line.c_str());
             vector<string> split = ofSplitString(line, ",");
             if (line.empty() == false && split.size() == 5)
             {
@@ -37,6 +37,11 @@ void VarManager::load_varibles(string directory)
     }
 
     dir.close();
+}
+
+void VarManager::unload()
+{
+    var_map.clear();
 }
 
 vector<Variable> &VarManager::operator[](string key)

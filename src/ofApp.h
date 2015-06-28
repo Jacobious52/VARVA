@@ -22,11 +22,15 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
 
+    // IViewDelegate
     void viewClicked(string name, View *sender);
 
-    vector<View *> views;
+    map<string, View *> views;
+    void addView(View *view);
 
     ofTrueTypeFont uiFont;
-    
-private:
+    ofTrueTypeFont uiFontLarge;
+
+    bool loaded;
+    float dragRadius;
 };

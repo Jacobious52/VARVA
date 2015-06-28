@@ -22,14 +22,14 @@ class View
 {
 public:
     View(ofPoint pos, ofPoint size)
-        : _pos(pos), _size(size), name("")
+        : _pos(pos), _size(size), name(""), hidden(false)
     {
         _delegate = 0;
         depth = 0;
     }
 
     View(int x, int y, int w, int h)
-    : _pos(x, y), _size(w, h), name("")
+    : _pos(x, y), _size(w, h), name(""), hidden(false)
     {
         _delegate = 0;
         depth = 0;
@@ -64,6 +64,8 @@ public:
     string name;
 
     float depth;
+
+    bool hidden;
 
 protected:
     ofPoint _pos;

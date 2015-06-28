@@ -21,6 +21,7 @@ public:
     }
 
     void load_varibles(string directory);
+    void unload();
 
     vector<Variable> &operator[](string key);
 
