@@ -112,7 +112,10 @@ void ofApp::draw()
             {
                 if (loaded)
                 {
+                    ofPushMatrix();
+                    ofTranslate(0, graphsOffset);
                     view.second->draw();
+                    ofPopMatrix();
                 }
             }
             else
@@ -126,7 +129,25 @@ void ofApp::draw()
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key)
 {
+    int c = 0;
+    for (auto var : views)
+    {
+        if (var.second->name.substr(0, 5) == "graph")
+        {
+            c++;
+        }
+    }
 
+    switch (key)
+    {
+        case OF_KEY_DOWN:
+            graphsOffset = ofLerp(graphsOffset, -(100 + (300+10*c)*c), 0.1);
+            break;
+        case OF_KEY_UP:
+            graphsOffset = ofLerp(graphsOffset, 0, 0.1);
+        default:
+            break;
+    }
 }
 
 //--------------------------------------------------------------
@@ -229,17 +250,20 @@ void ofApp::dragEvent(ofDragInfo dragInfo)
     // TODO: check if folder of file
     //VarManager::shared_manager().load_varibles("/Users/Jacob/Developer/of_v0.8.4_osx_release/apps/myApps/VARVA/debuggers/");
 
-    VarManager::shared_manager().load_varibles(dragInfo.files[0]);
-    loaded = true;
-    views.find("Unload")->second->hidden = false;
-
-    int y = 0;
-    for (auto var : VarManager::shared_manager().var_map)
+    if (!loaded)
     {
-        Graph *graph = new Graph(var.second, 20, 100 + (300+10*y)*y, ofGetWidth()-40, 300);
-        graph->setFont(uiFont);
-        graph->name = "graph_" + var.first;
-        addView(graph);
-        y++;
+        VarManager::shared_manager().load_varibles(dragInfo.files[0]);
+        loaded = true;
+        views.find("Unload")->second->hidden = false;
+
+        int y = 0;
+        for (auto var : VarManager::shared_manager().var_map)
+        {
+            Graph *graph = new Graph(var.second, 20, 100 + (300+10*y)*y, ofGetWidth()-40, 300);
+            graph->setFont(uiFont);
+            graph->name = "graph_" + var.first;
+            addView(graph);
+            y++;
+        }
     }
 }

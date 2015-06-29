@@ -36,4 +36,6 @@ public:
     float dragRadius;
 
     float toolbarOffset;
+
+    float graphsOffset;
 };
