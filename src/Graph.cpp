@@ -69,6 +69,22 @@ void Graph::draw()
         ofCircle(ppos.x, ppos.y, radius);
         line.curveTo(_pos.x + i*spacingX + 20, _pos.y + _size.y - v.var_value*spacingY - offsetY);
 
+    }
+
+    ofSetColor(ofColor::lightGray);
+    line.draw();
+
+    ofSetColor(255);
+    _font.drawString(name.substr(6, name.size()), _pos.x + 20, _pos.y + 20);
+
+    for (int i = 0; i < _points.size(); i++)
+    {
+        Variable v = _points[i];
+        ofPoint ppos(_pos.x + i*spacingX + 20, _pos.y + _size.y - v.var_value*spacingY - offsetY);
+
+        float radius = MAX(5, spacingX*0.25);
+
+
         if (ofRectangle(ppos.x - radius, ppos.y - radius, radius*2,
                         radius*2).inside(ofGetMouseX(), ofGetMouseY()))
         {
@@ -82,12 +98,6 @@ void Graph::draw()
             _font.drawString("Line: " + v.line, ofGetMouseX() + 10, ofGetMouseY() + 100);
         }
     }
-
-    ofSetColor(ofColor::lightGray);
-    line.draw();
-
-    ofSetColor(255);
-    _font.drawString(name.substr(6, name.size()), _pos.x + 20, _pos.y + 20);
 }
 
 void Graph::setFont(ofTrueTypeFont &font)
